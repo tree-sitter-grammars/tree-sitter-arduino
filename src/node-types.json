@@ -4806,6 +4806,10 @@
         "required": false,
         "types": [
           {
+            "type": "decltype",
+            "named": true
+          },
+          {
             "type": "dependent_name",
             "named": true
           },
@@ -4819,6 +4823,36 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "raw_string_literal",
+    "named": true,
+    "fields": {
+      "delimiter": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "raw_string_delimiter",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "raw_string_content",
+          "named": true
+        },
+        {
+          "type": "raw_string_delimiter",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -6316,7 +6350,15 @@
     "named": false
   },
   {
+    "type": "LR\"",
+    "named": false
+  },
+  {
     "type": "PROGMEM",
+    "named": false
+  },
+  {
+    "type": "R\"",
     "named": false
   },
   {
@@ -6325,6 +6367,10 @@
   },
   {
     "type": "U'",
+    "named": false
+  },
+  {
+    "type": "UR\"",
     "named": false
   },
   {
@@ -6656,7 +6702,11 @@
     "named": false
   },
   {
-    "type": "raw_string_literal",
+    "type": "raw_string_content",
+    "named": true
+  },
+  {
+    "type": "raw_string_delimiter",
     "named": true
   },
   {
@@ -6761,6 +6811,14 @@
   },
   {
     "type": "u8'",
+    "named": false
+  },
+  {
+    "type": "u8R\"",
+    "named": false
+  },
+  {
+    "type": "uR\"",
     "named": false
   },
   {
