@@ -124,6 +124,9 @@ unsigned tree_sitter_arduino_external_scanner_serialize(void *payload, char *buf
 
 void tree_sitter_arduino_external_scanner_deserialize(void *payload, const char *buffer, unsigned length) {}
 
-void tree_sitter_arduino_external_scanner_destroy(void *payload) {}
+void tree_sitter_arduino_external_scanner_destroy(void *payload) {
+  Scanner *scanner = static_cast<Scanner *>(payload);
+  delete scanner;
+}
 
 }
