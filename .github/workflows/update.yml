@@ -1,0 +1,43 @@
+name: Update Dependencies
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # every week
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        name: Checkout repository
+        with:
+          ref: master
+      - uses: actions/setup-node@v3
+        name: Set up NodeJS
+        with:
+          node-version: 16
+      - name: Update dependencies
+        run: npm update
+      - name: Install dependencies
+        run: npm install
+      - name: Generate parser
+        run: node_modules/.bin/tree-sitter generate
+      - name: Run tests
+        run: npm test
+      - name: Create pull request body
+        run: jq -rf .github/scripts/body.jq package-lock.json | sort > /tmp/body.md
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        name: Commit changes
+        with:
+          commit_message: Update & regenerate parser
+          branch: update-parser-pr
+          create_branch: true
+          skip_checkout: true
+          skip_fetch: true
+      - uses: peter-evans/create-pull-request@v5
+        name: Create pull request
+        with:
+          commit-message: Update & regenerate parser
+          body-path: /tmp/body.md
+          title: Update & regenerate parser
+          branch: update-parser-pr
