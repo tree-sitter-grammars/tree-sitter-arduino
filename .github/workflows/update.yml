@@ -3,6 +3,7 @@ name: Update Dependencies
 on:
   schedule:
     - cron: '0 0 * * 0'  # every week
+  workflow_dispatch:
 
 jobs:
   build:
@@ -30,6 +31,9 @@ jobs:
         name: Commit changes
         with:
           commit_message: Update & regenerate parser
+          commit_author: >-
+            github-actions[bot]
+            <41898282+github-actions[bot]@users.noreply.github.com>
           branch: update-parser-pr
           create_branch: true
           skip_checkout: true
