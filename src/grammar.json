@@ -13000,6 +13000,9 @@
       "attributed_statement"
     ],
     [
+      "enum_specifier"
+    ],
+    [
       "template_function",
       "template_type"
     ],
