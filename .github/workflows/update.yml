@@ -45,3 +45,4 @@ jobs:
           body-path: /tmp/body.md
           title: Update & regenerate parser
           branch: update-parser-pr
+          delete-branch: true
