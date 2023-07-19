@@ -41,7 +41,7 @@ jobs:
       - uses: peter-evans/create-pull-request@v5
         name: Create pull request
         with:
-          commit-message: Update & regenerate parser
+          commit-message: Update & regenerate parser [no ci]
           body-path: /tmp/body.md
           title: Update & regenerate parser
           branch: update-parser-pr
