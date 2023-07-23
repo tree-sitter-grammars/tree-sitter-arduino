@@ -22,11 +22,11 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Generate parser
-        run: node_modules/.bin/tree-sitter generate
+        run: npm run generate
       - name: Run tests
         run: npm test
       - name: Create pull request body
-        run: jq -rf .github/scripts/body.jq package-lock.json | sort > /tmp/body.md
+        run: jq -rf .github/scripts/body.jq package-lock.json > /tmp/body.md
       - uses: stefanzweifel/git-auto-commit-action@v4
         name: Commit changes
         with:
