@@ -84,6 +84,10 @@
     "named": true,
     "subtypes": [
       {
+        "type": "alignof_expression",
+        "named": true
+      },
+      {
         "type": "assignment_expression",
         "named": true
       },
@@ -382,6 +386,10 @@
         "named": true
       },
       {
+        "type": "primitive_type",
+        "named": true
+      },
+      {
         "type": "type_identifier",
         "named": true
       }
@@ -647,6 +655,41 @@
     }
   },
   {
+    "type": "alignas_specifier",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "_expression",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "alignof_expression",
+    "named": true,
+    "fields": {
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "type_descriptor",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "argument_list",
     "named": true,
     "fields": {},
@@ -823,6 +866,10 @@
         "types": [
           {
             "type": "_expression",
+            "named": true
+          },
+          {
+            "type": "initializer_list",
             "named": true
           }
         ]
@@ -1377,7 +1424,15 @@
       "required": false,
       "types": [
         {
+          "type": "alignas_specifier",
+          "named": true
+        },
+        {
           "type": "attribute_declaration",
+          "named": true
+        },
+        {
+          "type": "attribute_specifier",
           "named": true
         },
         {
@@ -1489,6 +1544,10 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "primitive_type",
+            "named": true
+          },
           {
             "type": "qualified_identifier",
             "named": true
@@ -1987,6 +2046,10 @@
       "required": false,
       "types": [
         {
+          "type": "alignas_specifier",
+          "named": true
+        },
+        {
           "type": "attribute_declaration",
           "named": true
         },
@@ -2232,6 +2295,21 @@
     }
   },
   {
+    "type": "else_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "enum_specifier",
     "named": true,
     "fields": {
@@ -2402,6 +2480,10 @@
       "required": false,
       "types": [
         {
+          "type": "alignas_specifier",
+          "named": true
+        },
+        {
           "type": "attribute_declaration",
           "named": true
         },
@@ -2556,7 +2638,7 @@
       },
       "operator": {
         "multiple": false,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "->",
@@ -2564,6 +2646,10 @@
           },
           {
             "type": ".",
+            "named": false
+          },
+          {
+            "type": ".*",
             "named": false
           }
         ]
@@ -2872,6 +2958,10 @@
       "required": false,
       "types": [
         {
+          "type": "alignas_specifier",
+          "named": true
+        },
+        {
           "type": "attribute_declaration",
           "named": true
         },
@@ -3118,6 +3208,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "alignas_specifier",
+          "named": true
+        },
         {
           "type": "attribute_declaration",
           "named": true
@@ -3424,7 +3518,7 @@
         "required": false,
         "types": [
           {
-            "type": "_statement",
+            "type": "else_clause",
             "named": true
           }
         ]
@@ -3703,32 +3797,6 @@
         "types": [
           {
             "type": "string_literal",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "macro_type_specifier",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "type": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "type_descriptor",
             "named": true
           }
         ]
@@ -4038,6 +4106,10 @@
       "required": false,
       "types": [
         {
+          "type": "alignas_specifier",
+          "named": true
+        },
+        {
           "type": "attribute_declaration",
           "named": true
         },
@@ -4118,6 +4190,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "alignas_specifier",
+          "named": true
+        },
         {
           "type": "attribute_declaration",
           "named": true
@@ -4204,6 +4280,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "alignas_specifier",
+          "named": true
+        },
         {
           "type": "attribute_declaration",
           "named": true
@@ -4420,6 +4500,40 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "pointer_type_declarator",
+    "named": true,
+    "fields": {
+      "declarator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "_type_declarator",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "ms_based_modifier",
+          "named": true
+        },
+        {
+          "type": "ms_pointer_modifier",
+          "named": true
+        },
+        {
+          "type": "type_qualifier",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -5269,6 +5383,10 @@
             "named": true
           },
           {
+            "type": "pointer_type_declarator",
+            "named": true
+          },
+          {
             "type": "qualified_identifier",
             "named": true
           },
@@ -5645,7 +5763,15 @@
       "required": false,
       "types": [
         {
+          "type": "alignas_specifier",
+          "named": true
+        },
+        {
           "type": "attribute_declaration",
+          "named": true
+        },
+        {
+          "type": "attribute_specifier",
           "named": true
         },
         {
@@ -5877,6 +6003,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "alignas_specifier",
+          "named": true
+        },
         {
           "type": "attribute_declaration",
           "named": true
@@ -6286,55 +6416,7 @@
         "required": true,
         "types": [
           {
-            "type": "class_specifier",
-            "named": true
-          },
-          {
-            "type": "decltype",
-            "named": true
-          },
-          {
-            "type": "dependent_type",
-            "named": true
-          },
-          {
-            "type": "enum_specifier",
-            "named": true
-          },
-          {
-            "type": "macro_type_specifier",
-            "named": true
-          },
-          {
-            "type": "placeholder_type_specifier",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
-            "named": true
-          },
-          {
-            "type": "qualified_identifier",
-            "named": true
-          },
-          {
-            "type": "sized_type_specifier",
-            "named": true
-          },
-          {
-            "type": "struct_specifier",
-            "named": true
-          },
-          {
-            "type": "template_type",
-            "named": true
-          },
-          {
-            "type": "type_identifier",
-            "named": true
-          },
-          {
-            "type": "union_specifier",
+            "type": "_type_specifier",
             "named": true
           }
         ]
@@ -6518,7 +6600,15 @@
       "required": false,
       "types": [
         {
+          "type": "alignas_specifier",
+          "named": true
+        },
+        {
           "type": "attribute_declaration",
+          "named": true
+        },
+        {
+          "type": "attribute_specifier",
           "named": true
         },
         {
@@ -6668,6 +6758,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "alignas_specifier",
+          "named": true
+        },
         {
           "type": "attribute_declaration",
           "named": true
@@ -7092,6 +7186,14 @@
   },
   {
     "type": "_unaligned",
+    "named": false
+  },
+  {
+    "type": "alignas",
+    "named": false
+  },
+  {
+    "type": "alignof",
     "named": false
   },
   {
