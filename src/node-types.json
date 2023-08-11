@@ -1997,6 +1997,10 @@
             "named": true
           },
           {
+            "type": "gnu_asm_expression",
+            "named": true
+          },
+          {
             "type": "init_declarator",
             "named": true
           },
@@ -6427,6 +6431,10 @@
       "required": false,
       "types": [
         {
+          "type": "attribute_specifier",
+          "named": true
+        },
+        {
           "type": "type_qualifier",
           "named": true
         }
@@ -7161,7 +7169,23 @@
     "named": false
   },
   {
+    "type": "__extension__",
+    "named": false
+  },
+  {
     "type": "__fastcall",
+    "named": false
+  },
+  {
+    "type": "__forceinline",
+    "named": false
+  },
+  {
+    "type": "__inline",
+    "named": false
+  },
+  {
+    "type": "__inline__",
     "named": false
   },
   {
@@ -7174,6 +7198,10 @@
   },
   {
     "type": "__thiscall",
+    "named": false
+  },
+  {
+    "type": "__thread",
     "named": false
   },
   {
