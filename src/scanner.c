@@ -18,9 +18,6 @@ typedef struct {
 /// Advance to the next character.
 static inline void advance(TSLexer *lexer) { lexer->advance(lexer, false); }
 
-/// Skip the current character.
-static inline void skip(TSLexer *lexer) { lexer->advance(lexer, true); }
-
 /// Scan a raw string delimiter in R"delimiter(content)delimiter".
 static bool scan_raw_string_delimiter(Scanner *scanner, TSLexer *lexer) {
     if (scanner->length > 0) {
