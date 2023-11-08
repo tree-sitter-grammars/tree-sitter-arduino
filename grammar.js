@@ -1,4 +1,4 @@
-const CPP = require('tree-sitter-cpp/grammar')
+const CPP = require('tree-sitter-cpp/grammar');
 
 module.exports = grammar(CPP, {
   name: 'arduino',
