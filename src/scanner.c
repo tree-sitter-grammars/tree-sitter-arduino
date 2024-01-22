@@ -5,6 +5,10 @@
 
 enum TokenType { RAW_STRING_DELIMITER, RAW_STRING_CONTENT };
 
+#if __STDC_VERSION__ < 201112L
+#define static_assert(cnd, msg) assert(cnd && msg)
+#endif // __STDC_VERSION__ < 201112L
+
 /// The spec limits delimiters to 16 chars
 #define MAX_DELIMITER_LENGTH 16
 
@@ -116,8 +120,8 @@ bool tree_sitter_arduino_external_scanner_scan(void *payload, TSLexer *lexer, co
 }
 
 unsigned tree_sitter_arduino_external_scanner_serialize(void *payload, char *buffer) {
-    assert(MAX_DELIMITER_LENGTH * sizeof (wchar_t) < TREE_SITTER_SERIALIZATION_BUFFER_SIZE &&
-           "Serialized delimiter is too long!");
+    static_assert(MAX_DELIMITER_LENGTH * sizeof (wchar_t) < TREE_SITTER_SERIALIZATION_BUFFER_SIZE,
+                  "Serialized delimiter is too long!");
 
     Scanner *scanner = (Scanner *) payload;
     size_t size = scanner->length * sizeof (wchar_t);

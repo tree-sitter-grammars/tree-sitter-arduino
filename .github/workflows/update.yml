@@ -9,11 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         name: Checkout repository
         with:
           ref: master
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         name: Set up NodeJS
         with:
           node-version: 20
@@ -27,7 +27,7 @@ jobs:
         run: npm test
       - name: Create pull request body
         run: jq -rf .github/scripts/body.jq package-lock.json > /tmp/body.md
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: stefanzweifel/git-auto-commit-action@v5
         name: Commit changes
         with:
           commit_message: Update & regenerate parser [no ci]
