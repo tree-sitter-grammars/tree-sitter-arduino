@@ -1,9 +1,9 @@
 {
   "name": "tree-sitter-arduino",
-  "version": "0.3.2",
+  "version": "0.20.0",
   "license": "MIT",
   "description": "Arduino grammar for tree-sitter",
-  "repository": "ObserverOfTime/tree-sitter-arduino",
+  "repository": "tree-sitter-grammars/tree-sitter-arduino",
   "author": {
     "name": "ObserverOfTime",
     "email": "chronobserver@disroot.org",
