@@ -7,7 +7,8 @@ on:
     branches: [master]
 
 jobs:
-  test:
+  node:
+    name: Test Node package
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,3 +21,15 @@ jobs:
         run: npm install
       - name: Run tests
         run: npm test
+  rust:
+    name: Test Rust package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          toolchain: stable
+      - name: Run tests
+        run: cargo test
