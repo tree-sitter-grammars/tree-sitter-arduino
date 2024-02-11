@@ -3,6 +3,8 @@
 [![CI][ci]](https://github.com/tree-sitter-grammars/tree-sitter-arduino/actions/workflows/ci.yml)
 [![discord][discord]](https://discord.gg/w7nTvsVJhm)
 [![matrix][matrix]](https://matrix.to/#/#nvim-treesitter:matrix.org)
+[![npm][npm]](https://www.npmjs.com/package/tree-sitter-arduino)
+[![crates][crates]](https://crates.io/crates/tree-sitter-arduino)
 
 An extension of [tree-sitter-cpp](https://github.com/tree-sitter/tree-sitter-cpp) to support Arduino files.
 
@@ -17,6 +19,8 @@ An extension of [tree-sitter-cpp](https://github.com/tree-sitter/tree-sitter-cpp
 - [x] Emacs
 - [ ] Zed
 
-[ci]: https://badgen.net/github/checks/tree-sitter-grammars/tree-sitter-arduino?label=CI&icon=github
+[ci]: https://img.shields.io/github/actions/workflow/status/tree-sitter-grammars/tree-sitter-arduino/ci.yml?logo=github&label=CI
 [discord]: https://img.shields.io/discord/1063097320771698699?logo=discord&label=tree-sitter
 [matrix]: https://img.shields.io/matrix/nvim-treesitter%3Amatrix.org?logo=matrix&label=nvim-treesitter
+[npm]: https://img.shields.io/npm/v/tree-sitter-arduino?logo=npm
+[crates]: https://img.shields.io/crates/v/tree-sitter-arduino?logo=rust
