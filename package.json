@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-arduino",
-  "version": "0.20.0",
+  "version": "0.20.1",
   "license": "MIT",
   "description": "Arduino grammar for tree-sitter",
   "repository": "tree-sitter-grammars/tree-sitter-arduino",
@@ -16,6 +16,7 @@
     "arduino"
   ],
   "scripts": {
+    "build-wasm": "tree-sitter build-wasm",
     "generate": "tree-sitter generate",
     "parse": "tree-sitter parse",
     "test": "tree-sitter test"
