@@ -1,0 +1,4 @@
+[submodule "arduino-examples"]
+  url = https://github.com/arduino/arduino-examples
+  path = examples
+  shallow = true
