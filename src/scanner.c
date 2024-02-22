@@ -147,3 +147,4 @@ void tree_sitter_arduino_external_scanner_destroy(void *payload) {
     Scanner *scanner = (Scanner *)payload;
     free(scanner);
 }
+
