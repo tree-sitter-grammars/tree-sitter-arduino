@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-arduino",
-  "version": "0.20.1",
+  "version": "0.20.2",
   "license": "MIT",
   "description": "Arduino grammar for tree-sitter",
   "repository": "tree-sitter-grammars/tree-sitter-arduino",
@@ -8,6 +8,10 @@
     "name": "ObserverOfTime",
     "email": "chronobserver@disroot.org",
     "url": "https://observeroftime.github.io/"
+  },
+  "funding": {
+    "url": "https://github.com/sponsors/ObserverOfTime",
+    "type": "github"
   },
   "keywords": [
     "tree-sitter",
