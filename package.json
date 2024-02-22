@@ -20,9 +20,7 @@
     "arduino"
   ],
   "scripts": {
-    "build-wasm": "tree-sitter build-wasm",
-    "generate": "tree-sitter generate",
-    "parse": "tree-sitter parse",
+    "build": "tree-sitter generate --no-bindings",
     "test": "tree-sitter test"
   },
   "main": "bindings/node",
@@ -30,9 +28,9 @@
     "nan": "^2.18.0"
   },
   "devDependencies": {
-    "tree-sitter-c": ">=0.20.7",
-    "tree-sitter-cli": "~0.21.0-pre-release-1",
-    "tree-sitter-cpp": ">=0.20.4"
+    "tree-sitter-c": ">=0.20.8",
+    "tree-sitter-cli": "~0.21.0",
+    "tree-sitter-cpp": ">=0.20.5"
   },
   "tree-sitter": [
     {
