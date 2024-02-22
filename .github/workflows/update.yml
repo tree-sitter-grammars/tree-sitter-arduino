@@ -5,10 +5,24 @@ on:
     - cron: '0 0 * * 0'  # every week
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   update:
-    uses: tree-sitter-grammars/.github/.github/workflows/dependencies.yml@main
-    with:
-      # TODO: use the parent scanner
-      # parent-name: cpp
-      language-name: arduino
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up NodeJS
+        uses: actions/setup-node@v4
+        with:
+          cache: npm
+          node-version: ${{vars.NODE_VERSION}}
+      - name: Update dependencies
+        id: update
+        uses: tree-sitter-grammars/actions/update@main
+        with:
+          parent-name: cpp
+          language-name: arduino
