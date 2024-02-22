@@ -15,6 +15,10 @@ on:
       - bindings/**
       - binding.gyp
 
+concurrency:
+  group: ${{github.workflow}}-${{github.ref}}
+  cancel-in-progress: true
+
 jobs:
   test:
     name: Test parser
@@ -29,7 +33,6 @@ jobs:
         with:
           submodules: true
           node-version: ${{vars.NODE_VERSION}}
-          ref: 3ad4da8d411a0b05e0eee6cfa733f80d0359eccb
       - name: Run tests
         uses: tree-sitter-grammars/actions/test@main
         with:
@@ -40,10 +43,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
       - name: Check for scanner changes
-        continue-on-error: true
         id: scanner-changes
-        run: "! git diff --quiet -- src/scanner.c"
+        run: |-
+          if git diff --quiet HEAD^ -- src/scanner.c; then
+            printf 'changed=false\n' >> "$GITHUB_OUTPUT"
+          else
+            printf 'changed=true\n' >> "$GITHUB_OUTPUT"
+          fi
       - name: Fuzz parser
-        if: steps.scanner.changes.outcome == 'success'
         uses: tree-sitter-grammars/tree-sitter-fuzz-action@v3
+        if: steps.scanner-changes.outputs.changed == 'true'
