@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-arduino",
-  "version": "0.20.2",
+  "version": "0.20.3",
   "license": "MIT",
   "description": "Arduino grammar for tree-sitter",
   "repository": "tree-sitter-grammars/tree-sitter-arduino",
@@ -35,6 +35,8 @@
   "tree-sitter": [
     {
       "scope": "source.arduino",
+      "highlights": "queries/highlights.scm",
+      "tags": "queries/tags.scm",
       "file-types": [
         "ino"
       ]
