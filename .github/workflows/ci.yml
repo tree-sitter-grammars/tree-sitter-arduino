@@ -1,4 +1,4 @@
-name: Test grammar
+name: CI
 
 on:
   push:
@@ -6,12 +6,14 @@ on:
     paths:
       - grammar.js
       - src/**
+      - test/**
       - bindings/**
       - binding.gyp
   pull_request:
     paths:
       - grammar.js
       - src/**
+      - test/**
       - bindings/**
       - binding.gyp
 
@@ -28,13 +30,13 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-14]
     steps:
-      - name: Set up repository
-        uses: tree-sitter-grammars/actions/setup@main
+      - name: Set up the repo
+        uses: tree-sitter/parser-setup-action@v1.1
         with:
           submodules: true
           node-version: ${{vars.NODE_VERSION}}
       - name: Run tests
-        uses: tree-sitter-grammars/actions/test@main
+        uses: tree-sitter/parser-test-action@v1.1
         with:
           test-library: ${{runner.os == 'Linux'}}
           examples: examples/examples/**/*.ino
@@ -54,5 +56,5 @@ jobs:
             printf 'changed=true\n' >> "$GITHUB_OUTPUT"
           fi
       - name: Fuzz parser
-        uses: tree-sitter-grammars/tree-sitter-fuzz-action@v3
+        uses: tree-sitter/fuzz-action@v4
         if: steps.scanner-changes.outputs.changed == 'true'

@@ -22,7 +22,7 @@ jobs:
           node-version: ${{vars.NODE_VERSION}}
       - name: Update dependencies
         id: update
-        uses: tree-sitter-grammars/actions/update@main
+        uses: tree-sitter/parser-update-action@v1.1
         with:
           parent-name: cpp
           language-name: arduino
