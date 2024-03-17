@@ -1,12 +1,15 @@
 [package]
 name = "tree-sitter-arduino"
-description = "arduino grammar for the tree-sitter parsing library"
-version = "0.20.3"
-keywords = ["incremental", "parsing", "arduino"]
+description = "Arduino grammar for the tree-sitter parsing library"
+version = "0.21.0"
+license = "MIT"
+readme = "README.md"
+keywords = ["incremental", "parsing", "tree-sitter", "arduino"]
 categories = ["parsing", "text-editors"]
 repository = "https://github.com/tree-sitter-grammars/tree-sitter-arduino"
+authors = ["ObserverOfTime <chronobserver@disroot.org>"]
 edition = "2021"
-license = "MIT"
+autoexamples = false
 
 build = "bindings/rust/build.rs"
 include = [
@@ -20,7 +23,7 @@ include = [
 path = "bindings/rust/lib.rs"
 
 [dependencies]
-tree-sitter = "~0.20.10"
+tree-sitter = "^0.22.2"
 
 [build-dependencies]
-cc = "^1.0"
+cc = "^1.0.90"

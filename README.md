@@ -5,6 +5,7 @@
 [![matrix][matrix]](https://matrix.to/#/#tree-sitter-chat:matrix.org)
 [![npm][npm]](https://www.npmjs.com/package/tree-sitter-arduino)
 [![crates][crates]](https://crates.io/crates/tree-sitter-arduino)
+[![pypi][pypi]](https://pypi.org/project/tree-sitter-arduino/)
 
 An extension of [tree-sitter-cpp](https://github.com/tree-sitter/tree-sitter-cpp) to support Arduino files.
 
@@ -24,3 +25,4 @@ An extension of [tree-sitter-cpp](https://github.com/tree-sitter/tree-sitter-cpp
 [matrix]: https://img.shields.io/matrix/tree-sitter-chat%3Amatrix.org?logo=matrix&label=matrix
 [npm]: https://img.shields.io/npm/v/tree-sitter-arduino?logo=npm
 [crates]: https://img.shields.io/crates/v/tree-sitter-arduino?logo=rust
+[pypi]: https://img.shields.io/pypi/v/tree-sitter-arduino?logo=pypi&logoColor=ffd242

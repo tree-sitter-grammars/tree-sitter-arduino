@@ -5,19 +5,19 @@
 //!
 //! ```
 //! let code = r#"
-//!     void setup() {
-//!       pinMode(LED_BUILTIN, OUTPUT);
-//!     }
+//! void setup() {
+//!   pinMode(LED_BUILTIN, OUTPUT);
+//! }
 //!
-//!     void loop() {
-//!       digitalWrite(LED_BUILTIN, HIGH);
-//!       delay(1000);
-//!       digitalWrite(LED_BUILTIN, LOW);
-//!       delay(1000);
-//!     }
+//! void loop() {
+//!   digitalWrite(LED_BUILTIN, HIGH);
+//!   delay(1000);
+//!   digitalWrite(LED_BUILTIN, LOW);
+//!   delay(1000);
+//! }
 //! "#;
 //! let mut parser = tree_sitter::Parser::new();
-//! parser.set_language(tree_sitter_arduino::language()).expect("Error loading arduino grammar");
+//! parser.set_language(&tree_sitter_arduino::language()).expect("Error loading arduino grammar");
 //! let tree = parser.parse(code, None).unwrap();
 //! assert!(!tree.root_node().has_error());
 //! ```
@@ -57,7 +57,7 @@ mod tests {
     fn test_can_load_grammar() {
         let mut parser = tree_sitter::Parser::new();
         parser
-            .set_language(super::language())
+            .set_language(&super::language())
             .expect("Error loading arduino language");
     }
 }
