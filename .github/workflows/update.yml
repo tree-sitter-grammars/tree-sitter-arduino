@@ -15,13 +15,18 @@ jobs:
       - name: Fetch dependabot metadata
         id: metadata
         uses: dependabot/fetch-metadata@v2
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        if: steps.metadata.outputs.package-ecosystem == 'npm_and_yarn'
+        with:
+          ref: ${{github.head_ref}}
       - name: Regenerate parser
-        if: steps.metadata.outputs.package-ecosystem == 'npm'
+        if: steps.metadata.outputs.package-ecosystem == 'npm_and_yarn'
         run: |-
           npm ci --legacy-peer-deps
           npm x -- tree-sitter generate --no-bindings
       - name: Update scanner
-        if: steps.metadata.outputs.package-ecosystem == 'npm'
+        if: steps.metadata.outputs.package-ecosystem == 'npm_and_yarn'
         run: |-
           language=$(jq -r .name src/grammar.json)
           parent=$(gh api --jq '.[]|select(.property_name == "Inherits")|.value' $API_ENDPOINT)
@@ -31,15 +36,11 @@ jobs:
           GH_TOKEN: ${{github.token}}
           API_ENDPOINT: repos/${{github.repository}}/properties/values
       - name: Commit changes
-        if: steps.metadata.outputs.package-ecosystem == 'npm'
+        if: steps.metadata.outputs.package-ecosystem == 'npm_and_yarn'
         run: |-
-          if ! git diff --exit-code -- src && git add src; then
+          if ! git diff --quiet -- src && git add src; then
             git config user.name "$GITHUB_ACTOR"
             git config user.email "$GITHUB_ACTOR_ID+$GITHUB_ACTOR@users.noreply.github.com"
-            git commit -m 'build: regenerate parser [dependabot skip]' && git push
+            git commit -m 'build: regenerate parser [dependabot skip]'
+            git push origin HEAD:$GITHUB_HEAD_REF
           fi
-      - name: Enable auto-merge
-        run: gh pr merge --auto --merge $PR_URL
-        env:
-          GH_TOKEN: ${{github.token}}
-          PR_URL: ${{github.event.pull_request.html_url}}
