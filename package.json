@@ -49,9 +49,9 @@
   },
   "devDependencies": {
     "tree-sitter-c": ">=0.21.0",
-    "tree-sitter-cli": "^0.22.4",
-    "tree-sitter-cpp": ">=0.21.0",
-    "prebuildify": "^6.0.0"
+    "tree-sitter-cli": "^0.22.5",
+    "tree-sitter-cpp": ">=0.22.0",
+    "prebuildify": "^6.0.1"
   },
   "overrides": {
     "tree-sitter-c": {
