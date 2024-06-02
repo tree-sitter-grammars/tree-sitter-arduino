@@ -22,6 +22,7 @@ module.exports = grammar(CPP, {
         alias($.constructor_try_statement, $.try_statement),
         $.default_method_clause,
         $.delete_method_clause,
+        $.pure_virtual_clause,
       ),
     )),
   }

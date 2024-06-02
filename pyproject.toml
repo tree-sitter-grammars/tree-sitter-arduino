@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "tree-sitter-arduino"
 description = "Arduino grammar for tree-sitter"
-version = "0.21.0"
+version = "0.21.1"
 keywords = ["incremental", "parsing", "tree-sitter", "arduino"]
 classifiers = [
   "Intended Audience :: Developers",
