@@ -36,8 +36,8 @@
     "test": "node --test"
   },
   "dependencies": {
-    "node-addon-api": "^8.0.0",
-    "node-gyp-build": "^4.8.1"
+    "node-addon-api": "^8.1.0",
+    "node-gyp-build": "^4.8.2"
   },
   "peerDependencies": {
     "tree-sitter": "^0.21.1"
@@ -48,9 +48,9 @@
     }
   },
   "devDependencies": {
-    "tree-sitter-c": ">=0.21.0",
-    "tree-sitter-cli": "^0.22.5",
-    "tree-sitter-cpp": ">=0.22.0",
+    "tree-sitter-c": ">=0.21.4",
+    "tree-sitter-cli": "^0.23.0",
+    "tree-sitter-cpp": ">=0.22.3",
     "prebuildify": "^6.0.1"
   },
   "overrides": {
