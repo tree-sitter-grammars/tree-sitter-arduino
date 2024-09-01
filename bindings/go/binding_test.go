@@ -3,8 +3,8 @@ package tree_sitter_arduino_test
 import (
 	"testing"
 
-	tree_sitter "github.com/smacker/go-tree-sitter"
-	"github.com/tree-sitter/tree-sitter-arduino"
+	tree_sitter "github.com/tree-sitter/go-tree-sitter"
+	tree_sitter_arduino "github.com/tree-sitter-grammars/tree-sitter-arduino/bindings/go"
 )
 
 func TestCanLoadGrammar(t *testing.T) {

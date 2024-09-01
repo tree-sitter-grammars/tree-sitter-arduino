@@ -1,7 +1,7 @@
 [package]
 name = "tree-sitter-arduino"
 description = "Arduino grammar for the tree-sitter parsing library"
-version = "0.21.1"
+version = "0.23.0"
 license = "MIT"
 readme = "README.md"
 keywords = ["incremental", "parsing", "tree-sitter", "arduino"]
@@ -23,7 +23,10 @@ include = [
 path = "bindings/rust/lib.rs"
 
 [dependencies]
-tree-sitter = "^0.22.2"
+tree-sitter-language = "0.1.0"
 
 [build-dependencies]
 cc = "^1.0.90"
+
+[dev-dependencies]
+tree-sitter = "0.23.0"
