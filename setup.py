@@ -1,15 +1,27 @@
-from os.path import isdir, join
+from os import path
 from platform import system
 
 from setuptools import Extension, find_packages, setup
 from setuptools.command.build import build
 from wheel.bdist_wheel import bdist_wheel
 
+sources = [
+    "bindings/python/tree_sitter_arduino/binding.c",
+    "src/parser.c",
+]
+if path.exists("src/scanner.c"):
+    sources.extend("src/scanner.c")
+
+if system() != "Windows":
+    cflags = ["-std=c11", "-fvisibility=hidden"]
+else:
+    cflags = ["/std:c11", "/utf-8"]
+
 
 class Build(build):
     def run(self):
-        if isdir("queries"):
-            dest = join(self.build_lib, "tree_sitter_arduino", "queries")
+        if path.isdir("queries"):
+            dest = path.join(self.build_lib, "tree_sitter_arduino", "queries")
             self.copy_tree("queries", dest)
         super().run()
 
@@ -33,15 +45,8 @@ setup(
     ext_modules=[
         Extension(
             name="_binding",
-            sources=[
-                "bindings/python/tree_sitter_arduino/binding.c",
-                "src/parser.c",
-                "src/scanner.c",
-            ],
-            extra_compile_args=[
-              "-std=c11",
-              "-fvisibility=hidden",
-            ] if system() != "Windows" else [],
+            sources=sources,
+            extra_compile_args=cflags,
             define_macros=[
                 ("Py_LIMITED_API", "0x03090000"),
                 ("PY_SSIZE_T_CLEAN", None),

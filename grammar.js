@@ -1,3 +1,12 @@
+/**
+ * @file Arduino grammar for tree-sitter
+ * @author ObserverOfTime
+ * @license MIT
+ */
+
+/// <reference types="tree-sitter-cli/dsl" />
+// @ts-check
+
 const CPP = require('tree-sitter-cpp/grammar');
 
 module.exports = grammar(CPP, {

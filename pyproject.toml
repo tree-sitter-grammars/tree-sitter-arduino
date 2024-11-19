@@ -5,14 +5,13 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "tree-sitter-arduino"
 description = "Arduino grammar for tree-sitter"
-version = "0.23.0"
+version = "0.24.0"
 keywords = ["incremental", "parsing", "tree-sitter", "arduino"]
 classifiers = [
   "Intended Audience :: Developers",
-  "License :: OSI Approved :: MIT License",
   "Topic :: Software Development :: Compilers",
   "Topic :: Text Processing :: Linguistic",
-  "Typing :: Typed"
+  "Typing :: Typed",
 ]
 requires-python = ">=3.9"
 license.text = "MIT"
@@ -27,7 +26,7 @@ name = "ObserverOfTime"
 email = "chronobserver@disroot.org"
 
 [project.optional-dependencies]
-core = ["tree-sitter~=0.23"]
+core = ["tree-sitter~=0.22"]
 
 [tool.cibuildwheel]
 build = "cp39-*"
