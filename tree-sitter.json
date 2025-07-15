@@ -3,7 +3,6 @@
     {
       "name": "arduino",
       "scope": "source.arduino",
-      "path": ".",
       "file-types": [
         "ino"
       ],
@@ -31,7 +30,8 @@
       }
     ],
     "links": {
-      "repository": "https://github.com/tree-sitter-grammars/tree-sitter-arduino"
+      "repository": "https://github.com/tree-sitter-grammars/tree-sitter-arduino",
+      "funding": "https://github.com/sponsors/ObserverOfTime"
     }
   }
 }
