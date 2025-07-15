@@ -13,6 +13,19 @@ updates:
       actions:
         patterns: ["*"]
 
+  - package-ecosystem: gitsubmodule
+    directory: /
+    schedule:
+      interval: weekly
+      day: sunday
+    commit-message:
+      prefix: test(deps)
+    labels:
+      - dependencies
+    groups:
+      actions:
+        patterns: ["*"]
+
   - package-ecosystem: npm
     versioning-strategy: increase
     directory: /

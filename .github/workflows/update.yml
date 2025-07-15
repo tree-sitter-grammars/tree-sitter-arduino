@@ -9,38 +9,8 @@ permissions:
 
 jobs:
   update:
-    runs-on: ubuntu-latest
+    uses: tree-sitter/workflows/.github/workflows/regenerate.yml@main
     if: github.actor == 'dependabot[bot]'
-    steps:
-      - name: Fetch dependabot metadata
-        id: metadata
-        uses: dependabot/fetch-metadata@v2
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        if: steps.metadata.outputs.package-ecosystem == 'npm_and_yarn'
-        with:
-          ref: ${{github.head_ref}}
-      - name: Regenerate parser
-        if: steps.metadata.outputs.package-ecosystem == 'npm_and_yarn'
-        run: |-
-          npm ci --legacy-peer-deps
-          npm x -- tree-sitter generate --no-bindings
-      - name: Update scanner
-        if: steps.metadata.outputs.package-ecosystem == 'npm_and_yarn'
-        run: |-
-          language=$(jq -r .name src/grammar.json)
-          parent=$(gh api --jq '.[]|select(.property_name == "Inherits")|.value' $API_ENDPOINT)
-          sed "s/tree_sitter_${parent}_/tree_sitter_${language}_/" \
-              "node_modules/tree-sitter-${parent}/src/scanner.c" > src/scanner.c
-        env:
-          GH_TOKEN: ${{github.token}}
-          API_ENDPOINT: repos/${{github.repository}}/properties/values
-      - name: Commit changes
-        if: steps.metadata.outputs.package-ecosystem == 'npm_and_yarn'
-        run: |-
-          if ! git diff --quiet -- src && git add src; then
-            git config user.name "$GITHUB_ACTOR"
-            git config user.email "$GITHUB_ACTOR_ID+$GITHUB_ACTOR@users.noreply.github.com"
-            git commit -m 'build: regenerate parser [dependabot skip]'
-            git push origin HEAD:$GITHUB_HEAD_REF
-          fi
+    with:
+      abi-version: 14
+      update-scanner: true
