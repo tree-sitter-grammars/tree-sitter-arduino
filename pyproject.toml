@@ -26,7 +26,7 @@ name = "ObserverOfTime"
 email = "chronobserver@disroot.org"
 
 [project.optional-dependencies]
-core = ["tree-sitter~=0.24"]
+core = ["tree-sitter~=0.25"]
 
 [tool.cibuildwheel]
 build = "cp310-*"

@@ -12,5 +12,4 @@ jobs:
     uses: tree-sitter/workflows/.github/workflows/regenerate.yml@main
     if: github.actor == 'dependabot[bot]'
     with:
-      abi-version: 14
       update-scanner: true
