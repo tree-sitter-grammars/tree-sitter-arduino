@@ -19,7 +19,7 @@
     }
   ],
   "metadata": {
-    "version": "0.24.0",
+    "version": "0.25.0",
     "license": "MIT",
     "description": "Arduino grammar for tree-sitter",
     "authors": [
@@ -30,8 +30,7 @@
       }
     ],
     "links": {
-      "repository": "https://github.com/tree-sitter-grammars/tree-sitter-arduino",
-      "funding": "https://github.com/sponsors/ObserverOfTime"
+      "repository": "https://github.com/tree-sitter-grammars/tree-sitter-arduino"
     }
   }
 }

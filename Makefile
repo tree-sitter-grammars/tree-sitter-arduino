@@ -1,6 +1,6 @@
 LANGUAGE_NAME := tree-sitter-arduino
 HOMEPAGE_URL := https://github.com/tree-sitter-grammars/tree-sitter-arduino
-VERSION := 0.24.0
+VERSION := 0.25.0
 
 # repository
 SRC_DIR := src
@@ -72,6 +72,9 @@ $(LANGUAGE_NAME).pc: bindings/c/$(LANGUAGE_NAME).pc.in
 		-e 's|@PROJECT_HOMEPAGE_URL@|$(HOMEPAGE_URL)|' \
 		-e 's|@CMAKE_INSTALL_PREFIX@|$(PREFIX)|' $< > $@
 
+$(SRC_DIR)/grammar.json: grammar.js
+	$(TS) generate --no-parser $^
+
 $(PARSER): $(SRC_DIR)/grammar.json
 	$(TS) generate $^
 
@@ -104,7 +107,7 @@ uninstall:
 	$(RM) -r '$(DESTDIR)$(DATADIR)'/tree-sitter/queries/arduino
 
 clean:
-	$(RM) $(OBJS) $(LANGUAGE_NAME).pc lib$(LANGUAGE_NAME).a lib$(LANGUAGE_NAME).$(SOEXT) lib$(LANGUAGE_NAME).lib
+	$(RM) $(OBJS) $(LANGUAGE_NAME).pc lib$(LANGUAGE_NAME).a lib$(LANGUAGE_NAME).$(SOEXT) lib$(LANGUAGE_NAME).dll.a
 
 test:
 	$(TS) test

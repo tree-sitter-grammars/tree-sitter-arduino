@@ -7,9 +7,9 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
-const CPP = require('tree-sitter-cpp/grammar');
+import CPP from 'tree-sitter-cpp/grammar.js';
 
-module.exports = grammar(CPP, {
+export default grammar(CPP, {
   name: 'arduino',
 
   rules: {

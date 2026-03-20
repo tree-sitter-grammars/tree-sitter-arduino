@@ -1,9 +1,12 @@
 {
   "name": "tree-sitter-arduino",
-  "version": "0.24.0",
+  "version": "0.25.0",
   "description": "Arduino grammar for tree-sitter",
-  "repository": "https://github.com/tree-sitter-grammars/tree-sitter-arduino",
-  "funding": "https://github.com/sponsors/ObserverOfTime",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tree-sitter-grammars/tree-sitter-arduino.git"
+  },
   "license": "MIT",
   "author": {
     "name": "ObserverOfTime",
@@ -29,14 +32,14 @@
     "*.wasm"
   ],
   "dependencies": {
-    "node-addon-api": "^8.3.1",
+    "node-addon-api": "^8.5.0",
     "node-gyp-build": "^4.8.4",
-    "tree-sitter-c": "^0.24.1",
     "tree-sitter-cpp": "^0.23.4"
   },
   "devDependencies": {
     "prebuildify": "^6.0.1",
-    "tree-sitter-cli": "^0.25.9"
+    "tree-sitter": "^0.25.0",
+    "tree-sitter-cli": "^0.26.7"
   },
   "peerDependencies": {
     "tree-sitter": "^0.25.0"
