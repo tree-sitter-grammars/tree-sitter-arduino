@@ -1,0 +1,33 @@
+// Arduino grammar for tree-sitter (native DSL).
+// Extends tree-sitter-cpp.
+
+let cpp = inherit("../tree-sitter-cpp/grammar.tsg")
+
+grammar {
+    language: "arduino",
+    inherits: cpp,
+}
+
+override rule primitive_type { choice(cpp::primitive_type, "byte", "word") }
+
+override rule type_qualifier { choice(cpp::type_qualifier, "PROGMEM") }
+
+override rule number_literal { choice(cpp::number_literal, regexp(r"B[01]{1,8}")) }
+
+override rule constructor_or_destructor_definition {
+    prec_left(0, seq(
+        repeat(_constructor_specifiers),
+        field(declarator, function_declarator),
+        choice(
+            seq(
+                optional(field_initializer_list),
+                field(body, compound_statement),
+                optional(";"),
+            ),
+            alias(constructor_try_statement, try_statement),
+            default_method_clause,
+            delete_method_clause,
+            pure_virtual_clause,
+        ),
+    ))
+}
